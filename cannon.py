@@ -10,31 +10,27 @@ Exercises
 
 from random import randrange
 from turtle import *
-
 from freegames import vector
 
 ball = vector(-200, -200)
 speed = vector(0, 0)
 targets = []
 
-
+#Se camiaron los números que correspondian a la velocidad para aumentarla en el juego
 def tap(x, y):
-    """Respond to screen tap."""
+    "Respond to screen tap."
     if not inside(ball):
         ball.x = -199
         ball.y = -199
-       
-        speed.x = (x + 200) / 10
-        speed.y = (y + 200) / 10
-
+        speed.x = (x + 200) / 25
+        speed.y = (y + 200) / 25
 
 def inside(xy):
-    """Return True if xy within screen."""
+    "Return True if xy within screen."
     return -200 < xy.x < 200 and -200 < xy.y < 200
 
-
 def draw():
-    """Draw ball and targets."""
+    "Draw ball and targets."
     clear()
 
     for target in targets:
@@ -55,12 +51,10 @@ def move():
         targets.append(target)
 
     for target in targets:
-     
-        target.x -= 2
+        target.x -= 0.5
 
     if inside(ball):
-        
-        speed.y -= 0.7
+        speed.y -= 0.35
         ball.move(speed)
 
     dupe = targets.copy()
@@ -69,18 +63,25 @@ def move():
     for target in dupe:
         if abs(target - ball) > 13:
             targets.append(target)
+
 #Aqui determino si el objeto esta dentro del limite para que en el momento que este salga, se reasigne a un lugar aleatorio
+
     for target in targets:
         if not inside(target):
             targets.remove(target)
             x = 200 
             y = randrange(-150, 150) 
+
             target.x = x
             target.y = y
 
     draw()
 
-    ontimer(move, 50)  
+
+
+    ontimer(move, 50)
+
+
 
 setup(420, 420, 370, 0)
 hideturtle()
@@ -89,4 +90,3 @@ tracer(False)
 onscreenclick(tap)
 move()
 done()
-
