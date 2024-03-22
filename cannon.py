@@ -70,12 +70,23 @@ def move():
             targets.remove(target)
             x = 200  # Nueva posición x (fuera de la pantalla)
             y = randrange(-150, 150)  # Nueva posición y (aleatoria)
+
+    for target in targets:
+        if not inside(target):
+            targets.remove(target)
+            x = 200 
+            y = randrange(-150, 150) 
+
             target.x = x
             target.y = y
 
     draw()
 
+
     ontimer(move, 50)
+
+    ontimer(move, 25)  
+
 
 setup(420, 420, 370, 0)
 hideturtle()
