@@ -69,7 +69,7 @@ def move():
     for target in dupe:
         if abs(target - ball) > 13:
             targets.append(target)
-
+#Aqui determino si el objeto esta dentro del limite para que en el momento que este salga, se reasigne a un lugar aleatorio
     for target in targets:
         if not inside(target):
             targets.remove(target)
@@ -80,7 +80,7 @@ def move():
 
     draw()
 
-    ontimer(move, 25)  
+    ontimer(move, 50)  
 
 setup(420, 420, 370, 0)
 hideturtle()
