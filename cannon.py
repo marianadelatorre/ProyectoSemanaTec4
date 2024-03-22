@@ -64,12 +64,7 @@ def move():
         if abs(target - ball) > 13:
             targets.append(target)
 
-#Se cambiaron las posiciones iniciales 
-    for target in targets:
-        if not inside(target):
-            targets.remove(target)
-            x = 200  # Nueva posición x (fuera de la pantalla)
-            y = randrange(-150, 150)  # Nueva posición y (aleatoria)
+#Aqui determino si el objeto esta dentro del limite para que en el momento que este salga, se reasigne a un lugar aleatorio
 
     for target in targets:
         if not inside(target):
@@ -83,9 +78,9 @@ def move():
     draw()
 
 
+
     ontimer(move, 50)
 
-    ontimer(move, 25)  
 
 
 setup(420, 420, 370, 0)
