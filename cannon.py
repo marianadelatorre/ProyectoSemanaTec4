@@ -46,9 +46,8 @@ def draw():
 
     update()
 
-
 def move():
-    """Move ball and targets."""
+    "Move ball and targets."
     if randrange(40) == 0:
         y = randrange(-150, 150)
         target = vector(200, y)
@@ -68,14 +67,17 @@ def move():
         if abs(target - ball) > 13:
             targets.append(target)
 
-    draw()
-
     for target in targets:
         if not inside(target):
-            return
+            targets.remove(target)
+            x = 200 
+            y = randrange(-150, 150) 
+            target.x = x
+            target.y = y
+
+    draw()
 
     ontimer(move, 50)
-
 
 setup(420, 420, 370, 0)
 hideturtle()
